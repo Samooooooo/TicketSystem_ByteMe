@@ -1,19 +1,21 @@
-namespace TicketSystem_ByteMe
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+if (!app.Environment.IsDevelopment())
 {
-  public class Program
-  {
-    public static void Main(string[] args)
-    {
-      var builder = WebApplication.CreateBuilder(args);
-      var app = builder.Build();
-      builder.Services.AddControllersWithViews();
-
-      app.UseRouting();
-
-      app.UseStaticFiles();
-
-
-      app.Run();
-    }
-  }
+  app.UseExceptionHandler("/Home/Error");
+  app.UseHsts();
 }
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseStaticFiles();
+
+app.MapDefaultControllerRoute();
+
+app.Run();

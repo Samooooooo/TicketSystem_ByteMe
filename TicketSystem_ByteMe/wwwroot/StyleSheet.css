@@ -1,0 +1,23 @@
+﻿.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #00ade5;
+  color: #fff;
+  padding: 2px;
+}
+
+
+.header {
+  background-color: #00ade5;
+  padding: 2px;
+}
+
+.FontColor {
+  color: #99999c
+}
+
+  .FontColor:hover {
+    color: #00ade5
+  }
