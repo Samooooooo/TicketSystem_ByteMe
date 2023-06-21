@@ -16,9 +16,9 @@ namespace TicketSystem_ByteMe.Models
     public Project Project { get; set; }
 
     public DateTime CreatedAt { get; set; }
-
+    [Required]
     public Employee CreatedBy { get; set; }
-
+    [Required]
     public Employee AssignedTo { get; set; }
     public DateTime? SolvedAt { get; set; }
   }
