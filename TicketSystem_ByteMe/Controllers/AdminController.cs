@@ -9,5 +9,14 @@ namespace TicketSystem_ByteMe.Home
     {
       return View();
     }
+
+    public IActionResult ManageProjects()
+    {
+      return View();
+    }
+    public IActionResult ShowEmployees()
+    {
+      return View();
+    }
   }
 }
