@@ -1,5 +1,4 @@
-﻿using TicketSystem_ByteMe;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TicketSystem_ByteMe.Home
 {
