@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -16,9 +17,11 @@ namespace TicketSystem_ByteMe.Models
     public Project Project { get; set; }
 
     public DateTime CreatedAt { get; set; }
-    [Required]
+
+    [DeleteBehavior(DeleteBehavior.Restrict)]
     public Employee CreatedBy { get; set; }
-    [Required]
+
+    [DeleteBehavior(DeleteBehavior.Restrict)]
     public Employee AssignedTo { get; set; }
     public DateTime? SolvedAt { get; set; }
   }
