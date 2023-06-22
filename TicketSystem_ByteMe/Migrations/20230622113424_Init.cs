@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TicketSystem_ByteMe.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialize : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,13 +64,12 @@ namespace TicketSystem_ByteMe.Migrations
                         column: x => x.AssignedToEmployeeID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tickets_Employees_CreatedByEmployeeID",
                         column: x => x.CreatedByEmployeeID,
                         principalTable: "Employees",
-                        principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "EmployeeID");
                     table.ForeignKey(
                         name: "FK_Tickets_Projects_ProjectID",
                         column: x => x.ProjectID,

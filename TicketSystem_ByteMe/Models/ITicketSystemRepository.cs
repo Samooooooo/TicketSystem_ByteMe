@@ -6,5 +6,7 @@
     IQueryable<Employee> Employees { get; }
     IQueryable<Ticket> Tickets { get; }
 
+    public void AddTicket(Ticket ticket);
+
   }
 }

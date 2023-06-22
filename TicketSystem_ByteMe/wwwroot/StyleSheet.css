@@ -22,3 +22,11 @@
   .FontColor:hover {
     color: #00ade5
   }
+
+tr:hover {
+  background: #00ade5;
+}
+
+td a {
+  display: block;
+}

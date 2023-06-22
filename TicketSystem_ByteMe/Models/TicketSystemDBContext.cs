@@ -8,11 +8,6 @@ namespace TicketSystem_ByteMe.Models
   public class TicketSystemDBContext : DbContext
   {
     public TicketSystemDBContext(DbContextOptions options) : base(options) {
-      Database.EnsureCreated();
-    }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-      optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TicketSystem_ByteMe;Trusted_Connection=True;");
     }
 
     public DbSet<Project> Projects { get; set; }

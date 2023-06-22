@@ -12,8 +12,8 @@ using TicketSystem_ByteMe.Models;
 namespace TicketSystem_ByteMe.Migrations
 {
     [DbContext(typeof(TicketSystemDBContext))]
-    [Migration("20230621133506_Initialize")]
-    partial class Initialize
+    [Migration("20230622113424_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,13 +123,13 @@ namespace TicketSystem_ByteMe.Migrations
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "AssignedTo")
                         .WithMany()
                         .HasForeignKey("AssignedToEmployeeID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedByEmployeeID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TicketSystem_ByteMe.Models.Project", "Project")

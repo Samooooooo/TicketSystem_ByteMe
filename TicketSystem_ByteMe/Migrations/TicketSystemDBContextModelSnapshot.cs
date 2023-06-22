@@ -120,13 +120,13 @@ namespace TicketSystem_ByteMe.Migrations
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "AssignedTo")
                         .WithMany()
                         .HasForeignKey("AssignedToEmployeeID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedByEmployeeID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TicketSystem_ByteMe.Models.Project", "Project")

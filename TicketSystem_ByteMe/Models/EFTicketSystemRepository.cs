@@ -12,5 +12,11 @@ namespace TicketSystem_ByteMe.Models
     public IQueryable<Project> Projects => ctx.Projects;
     public IQueryable<Employee> Employees => ctx.Employees;
     public IQueryable<Ticket> Tickets => ctx.Tickets;
+
+    public void AddTicket(Ticket ticket)
+    {
+      ctx.Tickets.Add(ticket);
+      ctx.SaveChanges();
+    }
   }
 }

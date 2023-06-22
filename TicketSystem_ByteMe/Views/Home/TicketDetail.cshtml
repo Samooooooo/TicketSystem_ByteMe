@@ -1,0 +1,19 @@
+﻿@model Ticket
+
+<div class="card">
+  <div class="card-header">
+    @Model.Headline - ID @Model.TicketID
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Project @Model.Project.Title - Ticket assigned to @Model.AssignedTo</h5>
+    <p class="card-text">@Model.Description</p>
+    <a asp-action="Index" class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-footer text-muted">
+    Created @Model.CreatedAt by @Model.CreatedBy
+    @if (Model.SolvedAt != null)
+    {
+      @:Solved @Model.SolvedAt
+    }
+  </div>
+</div>
