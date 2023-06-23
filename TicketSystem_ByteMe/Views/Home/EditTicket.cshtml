@@ -23,7 +23,7 @@
       <input type="hidden" asp-for="CreatedAt" />
       <input type="hidden" asp-for="CreatedBy.EmployeeID" />
     </form>
-    <a asp-action="Index" class="btn btn-primary">Back</a>
+    <a asp-action="TicketList" class="btn btn-primary">Back</a>
   </div>
   <div class="card-footer text-muted">
     Created @Model.CreatedAt by @Model.CreatedBy.LastName @Model.CreatedBy.FirstName

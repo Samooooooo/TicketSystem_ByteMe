@@ -1,5 +1,5 @@
 ﻿@model Ticket
-  <div asp-validation-summary="All"></div>
+<div asp-validation-summary="All"></div>
 <form asp-action="NewTicket" method="post">
   <div class="card">
     <div class="card-header">
@@ -11,12 +11,12 @@
       <span asp-validation-for="Project"></span>
       <label asp-for="Project.ProjectID">Project: </label>
       <select asp-for="Project.ProjectID" asp-items="@ViewBag.Project" class="form-control">
-           <option selected disabled value="">...</option>
+        <option selected disabled value="">...</option>
       </select>
       <span asp-validation-for="AssignedTo"></span>
       <label asp-for="AssignedTo.EmployeeID">AssignedTo: </label>
       <select asp-for="AssignedTo.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-          <option selected disabled>...</option>
+        <option selected disabled>...</option>
       </select>
     </div>
     <span asp-validation-for="Description"></span>
@@ -27,9 +27,10 @@
     <span asp-validation-for="CreatedBy"></span>
     <label asp-for="CreatedBy.EmployeeID">CreatedBy: </label>
     <select asp-for="CreatedBy.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-        <option selected disabled>...</option>
+      <option selected disabled>...</option>
     </select>
   </div>
   <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
   <button type="submit">Submit Ticket</button>
 </form>
+<a asp-action="TicketList" class="btn btn-dark">Back</a>
