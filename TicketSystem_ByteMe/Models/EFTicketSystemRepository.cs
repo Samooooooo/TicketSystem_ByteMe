@@ -26,5 +26,12 @@ namespace TicketSystem_ByteMe.Models
       ctx.Update(oldTicket);
       ctx.SaveChanges();
     }
+    public void SolvedTicket(int id)
+    {
+      Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == id);
+      oldTicket.SolvedAt = DateTime.Now;
+      ctx.Update(oldTicket);
+      ctx.SaveChanges();
+    }
   }
 }

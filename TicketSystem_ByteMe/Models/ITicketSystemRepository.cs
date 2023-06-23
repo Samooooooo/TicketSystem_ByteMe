@@ -8,5 +8,6 @@
 
     public void AddTicket(Ticket ticket);
     public void EditTicket(Ticket ticket);
+    public void SolvedTicket(int id);
   }
 }

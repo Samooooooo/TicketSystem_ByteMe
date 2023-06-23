@@ -25,6 +25,10 @@ namespace TicketSystem_ByteMe.Home
     }
     public IActionResult Index()
     {
+      return View();
+    }
+    public IActionResult TicketList()
+    {
 
       return View(repo.Tickets.Include(t => t.Project).Include(t => t.AssignedTo).Include(t => t.CreatedBy).OrderBy(h => h.Project));
     }
@@ -60,7 +64,7 @@ namespace TicketSystem_ByteMe.Home
       if (ModelState.IsValid)
       {
         repo.AddTicket(ticket);
-        return RedirectToAction("Index");
+        return RedirectToAction("TicketList");
       }
       else
       {
@@ -89,7 +93,7 @@ namespace TicketSystem_ByteMe.Home
       if (ModelState.IsValid)
       {
         repo.EditTicket(ticket);
-        return RedirectToAction("Index");
+        return RedirectToAction("TicketList");
       }
       else
       {
@@ -97,6 +101,11 @@ namespace TicketSystem_ByteMe.Home
         return View(ticket);
 
       }
+    }
+    public IActionResult SolvedTicket(int id) 
+    {
+      repo.SolvedTicket(id); 
+      return RedirectToAction("TicketList"); 
     }
   }
 }

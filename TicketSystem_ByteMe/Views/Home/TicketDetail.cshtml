@@ -9,7 +9,10 @@
       Project @Model.Project.Title - Ticket assigned to @Model.AssignedTo.LastName @Model.AssignedTo.FirstName
     </div>
     <p class="card-text">@Model.Description</p>
-    <a asp-action="Index" class="btn btn-primary">Back</a>
+    @if (Model.SolvedAt == null)
+    {      
+      <a asp-action="SolvedTicket" asp-route-id="@Model.TicketID" class="btn btn-outline-success">mark as solved</a>
+    }
   </div>
   <div class="card-footer text-muted">
     Created @Model.CreatedAt by @Model.CreatedBy.LastName @Model.CreatedBy.FirstName
@@ -19,4 +22,5 @@
     }
   </div>
 </div>
+    <a asp-action="Index" class="btn btn-dark">Back</a>
 
