@@ -1,6 +1,6 @@
 ﻿@model Ticket
-
 <form asp-action="NewTicket" method="post">
+  <div asp-validation-summary="All"></div>
   <div class="card">
     <div class="card-header">
       <span asp-validation-for="Headline"></span>
@@ -9,29 +9,27 @@
     </div>
     <div class="card-body form-group">
       <span asp-validation-for="Project"></span>
-      <label asp-for="Project.ProjectID"></label>
+      <label asp-for="Project.ProjectID">Project: </label>
       <select asp-for="Project.ProjectID" asp-items="@ViewBag.Project" class="form-control">
-     @*   <option selected disabled>...</option>*@
+        @*   <option selected disabled>...</option>*@
       </select>
       <span asp-validation-for="AssignedTo"></span>
-      <label asp-for="AssignedTo.EmployeeID"></label>
+      <label asp-for="AssignedTo.EmployeeID">AssignedTo: </label>
       <select asp-for="AssignedTo.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-      @*  <option selected disabled>...</option>*@
+        @*  <option selected disabled>...</option>*@
       </select>
     </div>
     <span asp-validation-for="Description"></span>
     <label asp-for="Description"></label>
-    <textarea asp-for="Description"></textarea>>
+    <textarea asp-for="Description"></textarea>
   </div>
   <div class="card-footer text-muted">
-    <label type="hidden" asp-for="CreatedAt"></label>
-    <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
-
     <span asp-validation-for="CreatedBy"></span>
-    <label asp-for="CreatedBy.EmployeeID"></label>
+    <label asp-for="CreatedBy.EmployeeID">CreatedBy: </label>
     <select asp-for="CreatedBy.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-    @*  <option selected disabled>...</option>*@
+      @*  <option selected disabled>...</option>*@
     </select>
   </div>
+  <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
   <button type="submit">Submit Ticket</button>
 </form>

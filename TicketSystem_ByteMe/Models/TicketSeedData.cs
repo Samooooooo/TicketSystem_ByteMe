@@ -30,12 +30,14 @@ namespace TicketSystem_ByteMe.Models
       Employee employee = new Employee()
       {
         FirstName = "testName",
-        LastName = "testLastName"
+        LastName = "testLastName",
+        JobTitle = JobTitle.Developer
       };
       Employee employee2 = new Employee()
       {
         FirstName = "testName2",
-        LastName = "testLastName2"
+        LastName = "testLastName2",
+        JobTitle = JobTitle.Developer
       };
       Project project = new Project()
       {
