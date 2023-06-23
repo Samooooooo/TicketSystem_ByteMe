@@ -1,5 +1,5 @@
 ﻿@model Ticket
-
+<div asp-validation-summary="All"></div>
 <div class="card">
   <div class="card-header">
     @Model.Headline - ID @Model.TicketID
@@ -8,7 +8,16 @@
     <div class="card-title fw-bold text-center">
       Project @Model.Project.Title - Ticket assigned to @Model.AssignedTo.LastName @Model.AssignedTo.FirstName
     </div>
-    <p class="card-text">@Model.Description</p>
+    <form asp-action="EditTicket" method="post">
+      <span asp-validation-for="AssignedTo"></span>
+      <label asp-for="AssignedTo.EmployeeID">AssignedTo: </label>
+      <select asp-for="AssignedTo.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
+      </select>
+      <span asp-validation-for="Description"></span>
+      <label asp-for="Description"></label>
+      <textarea asp-for="Description"></textarea>
+      <button type="submit">Submit Ticket</button>
+    </form>
     <a asp-action="Index" class="btn btn-primary">Back</a>
   </div>
   <div class="card-footer text-muted">
@@ -19,4 +28,3 @@
     }
   </div>
 </div>
-

@@ -7,6 +7,6 @@
     IQueryable<Ticket> Tickets { get; }
 
     public void AddTicket(Ticket ticket);
-
+    public void EditTicket(Ticket ticket);
   }
 }

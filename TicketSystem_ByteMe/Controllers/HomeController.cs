@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Sockets;
 using TicketSystem_ByteMe.Models;
 
 namespace TicketSystem_ByteMe.Home
@@ -12,13 +13,19 @@ namespace TicketSystem_ByteMe.Home
     {
       this.repo = repo;
     }
+    private void GenerateValues()
+    {
+      var employees = repo.Employees.Select(n => new { Name = n.LastName + ' ' + n.FirstName, ID = n.EmployeeID.ToString() });
+      var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
+      ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
+      ViewBag.Employee = new SelectList(employees, "ID", "Name");
 
+    }
     public IActionResult Index()
     {
 
       return View(repo.Tickets.Include(t => t.Project).Include(t => t.AssignedTo).Include(t => t.CreatedBy).OrderBy(h => h.Project));
     }
-
     public IActionResult TicketDetail(int id)
     {
       return View(repo.Tickets.Include(t => t.Project).Include(e => e.AssignedTo).Include(t => t.CreatedBy).FirstOrDefault(t => t.TicketID == id));
@@ -32,16 +39,42 @@ namespace TicketSystem_ByteMe.Home
     [HttpPost]
     public IActionResult NewTicket(Ticket ticket)
     {
-      ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
-      ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
       ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
 
       ModelState.Clear();
       TryValidateModel(ticket);
 
+      //if (ModelState.IsValid)
+      //{
+        repo.AddTicket(ticket);
+        return RedirectToAction("Index");
+      //}
+      //else
+      //{
+      //  GenerateValues();
+      //  return View(ticket);
+
+      //}
+    }
+
+    [HttpGet]
+    public IActionResult EditTicket(int id)
+    {
+      GenerateValues();
+      return View(repo.Tickets.Include(t => t.Project).Include(e => e.AssignedTo).Include(t => t.CreatedBy).FirstOrDefault(t => t.TicketID == id));
+    }
+    [HttpPost]
+    public IActionResult EditTicket(Ticket ticket)
+    {
+      //ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
+      //ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
+      //ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+      ModelState.Clear();
+      TryValidateModel(ticket);
+
       if (ModelState.IsValid)
       {
-        repo.AddTicket(ticket);
+        repo.EditTicket(ticket);
         return RedirectToAction("Index");
       }
       else
@@ -50,14 +83,6 @@ namespace TicketSystem_ByteMe.Home
         return View(ticket);
 
       }
-    }
-    private void GenerateValues()
-    {
-      var employees = repo.Employees.Select(n => new { Name = n.LastName + ' ' + n.FirstName, ID = n.EmployeeID.ToString() });
-      var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
-      ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
-      ViewBag.Employee = new SelectList(employees, "ID", "Name");
-
     }
   }
 }

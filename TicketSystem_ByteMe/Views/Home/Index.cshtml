@@ -1,6 +1,6 @@
 ﻿@model IQueryable<Ticket>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <td>Projekt</td>
@@ -16,6 +16,9 @@
         </td>
         <td>
           <a asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
+        </td>
+        <td>
+          <a class="btn btn-outline-dark" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
         </td>
       </tr>
     }
