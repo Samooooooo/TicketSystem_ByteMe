@@ -29,29 +29,29 @@ namespace TicketSystem_ByteMe.Models
 
       Employee employee = new Employee()
       {
-        FirstName = "testName",
-        LastName = "testLastName",
+        FirstName = "osama",
+        LastName = "osama2",
         JobTitle = JobTitle.Developer
       };
       Employee employee2 = new Employee()
       {
-        FirstName = "testName2",
-        LastName = "testLastName2",
+        FirstName = "nils",
+        LastName = "nils2",
         JobTitle = JobTitle.Developer
       };
       Project project = new Project()
       {
-        Description = "ProjectDescriptionTest",
+        Description = "Badr",
         Start = DateTime.Now,
         End = DateTime.Now.AddDays(20),
-        Title = "TestTitleProject"
+        Title = "Badr"
       };
       Project project2 = new Project()
       {
-        Description = "ProjectDescriptionTest",
+        Description = "kemal",
         Start = DateTime.Now,
         End = DateTime.Now.AddDays(20),
-        Title = "TestTitleProject2"
+        Title = "kemal"
       };
 
       dbContext.Add(employee);

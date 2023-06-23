@@ -21,7 +21,7 @@ namespace TicketSystem_ByteMe.Home
 
     public IActionResult TicketDetail(int id)
     {
-      return View(repo.Tickets.FirstOrDefault(t => t.TicketID == id));
+      return View(repo.Tickets.Include(t => t.Project).Include(e => e.AssignedTo).Include(t => t.CreatedBy).FirstOrDefault(t => t.TicketID == id));
     }
     [HttpGet]
     public IActionResult NewTicket()
@@ -35,6 +35,9 @@ namespace TicketSystem_ByteMe.Home
       ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
       ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
       ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+
+      ModelState.Clear();
+      TryValidateModel(ticket);
 
       if (ModelState.IsValid)
       {
@@ -51,9 +54,10 @@ namespace TicketSystem_ByteMe.Home
     private void GenerateValues()
     {
       var employees = repo.Employees.Select(n => new { Name = n.LastName + ' ' + n.FirstName, ID = n.EmployeeID.ToString() });
-      var projects = repo.Projects.Select(n => new { n.Title,  n.ProjectID });
+      var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
       ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
       ViewBag.Employee = new SelectList(employees, "ID", "Name");
+
     }
   }
 }
