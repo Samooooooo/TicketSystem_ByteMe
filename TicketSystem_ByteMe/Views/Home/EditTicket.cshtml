@@ -17,6 +17,11 @@
       <label asp-for="Description"></label>
       <textarea asp-for="Description"></textarea>
       <button type="submit">Submit Ticket</button>
+      <input type="hidden" asp-for="Headline" />
+      <input type="hidden" asp-for="TicketID" />
+      <input type="hidden" asp-for="Project.ProjectID" />
+      <input type="hidden" asp-for="CreatedAt" />
+      <input type="hidden" asp-for="CreatedBy.EmployeeID" />
     </form>
     <a asp-action="Index" class="btn btn-primary">Back</a>
   </div>

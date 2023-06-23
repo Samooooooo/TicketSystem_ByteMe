@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Net.Sockets;
 using TicketSystem_ByteMe.Models;
 
@@ -39,22 +41,33 @@ namespace TicketSystem_ByteMe.Home
     [HttpPost]
     public IActionResult NewTicket(Ticket ticket)
     {
+      if (ticket.Project is not null)
+      {        
+      ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
+      }
+      if (ticket.CreatedBy is not null)
+      {
+      ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
+      }
+      if (ticket.AssignedTo is not null)
+      {
       ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+      }
 
       ModelState.Clear();
       TryValidateModel(ticket);
 
-      //if (ModelState.IsValid)
-      //{
+      if (ModelState.IsValid)
+      {
         repo.AddTicket(ticket);
         return RedirectToAction("Index");
-      //}
-      //else
-      //{
-      //  GenerateValues();
-      //  return View(ticket);
+      }
+      else
+      {
+        GenerateValues();
+        return View(ticket);
 
-      //}
+      }
     }
 
     [HttpGet]
@@ -66,9 +79,10 @@ namespace TicketSystem_ByteMe.Home
     [HttpPost]
     public IActionResult EditTicket(Ticket ticket)
     {
-      //ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
-      //ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
-      //ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+      ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
+      ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
+      ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+
       ModelState.Clear();
       TryValidateModel(ticket);
 
