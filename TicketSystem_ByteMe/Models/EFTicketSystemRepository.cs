@@ -65,6 +65,11 @@ namespace TicketSystem_ByteMe.Models
       ctx.Projects.Update(oldProject);
       ctx.SaveChanges();
     }
+    public void RemoveProject(Project project)
+    {
+      ctx.Remove(project);
+      ctx.SaveChanges();
+    }
   }
 }
 

@@ -13,5 +13,6 @@
     public void AddProject(Project project);
     public void EditProject(Project project);
     public void EndProject(int id);
+    public void RemoveProject(Project project);
   }
 }

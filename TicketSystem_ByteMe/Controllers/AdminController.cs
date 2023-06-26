@@ -81,5 +81,10 @@ namespace TicketSystem_ByteMe.Home
       repo.EndProject(id);
       return RedirectToAction("ShowProjects");
     }
+    public IActionResult DeleteProject(Project project) 
+    {
+      repo.RemoveProject(project);
+      return RedirectToAction("ShowProjects");
+    }
   }
 }
