@@ -1,57 +1,59 @@
 ﻿@model IQueryable<Project>
 <h4>Project List</h4>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>project</th>
-    </tr>
-  </thead>
-  <tr>
-    <td>ProjectId</td>
-    <td>Title</td>
-    <td>Description</td>
-    <td>Start</td>
-    <td>End</td>
-
-  </tr>
-  <tbody>
-    @foreach (var project in Model)
-    {
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td>
-          <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.ProjectID</a>
-        </td>
-        <td>
-          <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Title</a>
-        </td>
-        <td>
-          <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Description</a>
-        </td>
-        <td>
-          <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Start</a>
-        </td>
-        <td>
-          <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.End</a>
-        </td>
-        @if (project.End is null)
-        {
-          <td>
-            <a class="btn btn-outline-dark" asp-action="EditProject" asp-route-id="@project.ProjectID">Edit</a>
-          </td>
-        }
-        else
-        {
-          <td>
-            <div>
-              <a class="btn btn-outline-success">Ended</a>
-              @project.End
-            </div>
-          </td>
-        }
+        <th>project</th>
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tr>
+      <td>ProjectId</td>
+      <td>Title</td>
+      <td>Description</td>
+      <td>Start</td>
+      <td>End</td>
+
+    </tr>
+    <tbody>
+      @foreach (var project in Model)
+      {
+        <tr>
+          <td>
+            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.ProjectID</a>
+          </td>
+          <td>
+            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Title</a>
+          </td>
+          <td>
+            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Description</a>
+          </td>
+          <td>
+            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Start</a>
+          </td>
+          <td>
+            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.End</a>
+          </td>
+          @if (project.End is null)
+          {
+            <td>
+              <a class="btn btn-outline-dark" asp-action="EditProject" asp-route-id="@project.ProjectID">Edit</a>
+            </td>
+          }
+          else
+          {
+            <td>
+              <div>
+                <a class="btn btn-outline-success">Ended</a>
+                @project.End
+              </div>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
 
 
 <a asp-action="NewProject" class="btn btn-primary">Add New Projects</a>
