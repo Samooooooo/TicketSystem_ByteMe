@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using TicketSystem_ByteMe.Models;
 
 namespace TicketSystem_ByteMe.Home
@@ -19,19 +17,18 @@ namespace TicketSystem_ByteMe.Home
       return View();
     }
 
-    public IActionResult ManageProjects()
+    public IActionResult ShowProjects()
     {
-      var projeckts = repo.Projects.ToList();
       return View(repo.Projects);
     }
 
     [HttpGet]
-    public IActionResult AddProject()
+    public IActionResult NewProject()
     {
       return View();
     }
     [HttpPost]
-    public IActionResult AddProject(Project project)
+    public IActionResult NewProject(Project project)
     {
       if (ModelState.IsValid)
       {
@@ -48,13 +45,13 @@ namespace TicketSystem_ByteMe.Home
     }
 
     [HttpGet]
-    public IActionResult AddEmployee()
+    public IActionResult NewEmployee()
     {
       return View();
     }
 
     [HttpPost]
-    public IActionResult AddEmployee(Employee employee)
+    public IActionResult NewEmployee(Employee employee)
     {
       if (ModelState.IsValid)
       {
@@ -63,6 +60,26 @@ namespace TicketSystem_ByteMe.Home
       }
 
       return View(employee);
+    }
+    [HttpGet]
+    public IActionResult EditProject(int id)
+    {
+      return View(repo.Projects.FirstOrDefault(p => p.ProjectID == id));
+    }
+    [HttpPost]
+    public IActionResult EditProject(Project project)
+    {
+      repo.EditProject(project);
+      return RedirectToAction("Home");
+    }
+    public IActionResult ProjectDetail(int id) 
+    {
+      return View(repo.Projects.FirstOrDefault(p => p.ProjectID == id));
+    }
+    public IActionResult EndProject(int id)
+    {
+      repo.EndProject(id);
+      return RedirectToAction("ShowProjects");
     }
   }
 }

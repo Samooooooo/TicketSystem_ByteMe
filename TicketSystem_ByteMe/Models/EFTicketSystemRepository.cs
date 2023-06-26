@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicketSystem_ByteMe.Models
 {
@@ -46,6 +47,22 @@ namespace TicketSystem_ByteMe.Models
     public void AddProject(Project project)
     {
       ctx.Projects.Add(project);
+      ctx.SaveChanges();
+    }
+    public void EditProject(Project project)
+    { 
+      Project oldProject = ctx.Projects.FirstOrDefault(p => p.ProjectID == project.ProjectID);
+      oldProject.Start = project.Start;
+      oldProject.Title = project.Title;
+      oldProject.Description = project.Description; 
+      ctx.Projects.Update(oldProject);
+      ctx.SaveChanges();
+    }
+    public void EndProject(int id)
+    {
+      Project oldProject = ctx.Projects.FirstOrDefault(p => p.ProjectID == id);
+      oldProject.End = DateTime.Now;
+      ctx.Projects.Update(oldProject);
       ctx.SaveChanges();
     }
   }

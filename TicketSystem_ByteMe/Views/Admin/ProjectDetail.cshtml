@@ -1,0 +1,25 @@
+﻿@model Project
+
+<div class="card">
+  <div class="card-header">
+    Title: @Model.Title - ID: @Model.ProjectID
+  </div>
+  <div class="card-body">
+    <div class="card-title fw-bold text-center">
+    </div>
+    <p class="card-text">@Model.Description</p>
+    @if (Model.End == null)
+    {
+      <a asp-action="EndProject" asp-route-id="@Model.ProjectID" class="btn btn-outline-success">finish Project</a>
+    }
+  </div>
+  <div class="card-footer text-muted">
+    Start: @Model.Start
+    @if (Model.End != null)
+    {
+      @:End: @Model.End
+    }
+  </div>
+</div>
+<a asp-action="ShowProjects" class="btn btn-dark">Back</a>
+

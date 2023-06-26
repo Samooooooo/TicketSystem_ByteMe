@@ -12,14 +12,15 @@
 <body>
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" asp-action="Home">Logo</a>
-      <div style="left:140px ; position:fixed">
+      <a class="navbar-brand" asp-action="Home"><img src="~/img/bitlclogo_red.png" width="175"/></a>
+      
+      <div>
         <a asp-controller="Home" asp-action="Index" class="nav-link FontColor">Leave Admin Area</a>
       </div>
-      <div style=" position:fixed; left:300px">
-        <a class="nav-link" asp-action="ManageProjects">Projects</a>
+      <div>
+        <a class="nav-link" asp-action="ShowProjects">Projects</a>
       </div>
-      <div style=" position:fixed; left:390px">
+      <div>
         <a class="nav-link" asp-action="ShowEmployees">Employees</a>
       </div>
     </nav>
