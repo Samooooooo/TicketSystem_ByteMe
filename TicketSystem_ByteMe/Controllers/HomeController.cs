@@ -25,7 +25,7 @@ namespace TicketSystem_ByteMe.Home
     }
     public IActionResult Index()
     {
-      return View();
+      return View(repo);
     }
     public IActionResult TicketList()
     {

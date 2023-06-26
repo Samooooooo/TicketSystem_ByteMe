@@ -43,14 +43,12 @@ namespace TicketSystem_ByteMe.Models
       {
         Description = "Badr",
         Start = DateTime.Now,
-        End = DateTime.Now.AddDays(20),
         Title = "Badr"
       };
       Project project2 = new Project()
       {
         Description = "kemal",
         Start = DateTime.Now,
-        End = DateTime.Now.AddDays(20),
         Title = "kemal"
       };
 

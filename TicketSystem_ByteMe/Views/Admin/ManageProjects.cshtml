@@ -1,17 +1,17 @@
 ﻿@model IQueryable<Project>
-
-<table>
+<h4>Project List</h4>
+<table class="table table-bordered table-striped">
 	<thead class="">
 		<tr>
 			<th>Projekt</th>
 		</tr>
 	</thead>
 	<tr>
-		<td class="card-body form-group">ProjectId</td>
-		<td class="card-body form-group">Title</td>
-		<td class="card-body form-group">Description</td>
-		<td class="card-body form-group">Start</td>
-		<td class="card-body form-group">End</td>
+		<td >ProjectId</td>
+		<td >Title</td>
+		<td >Description</td>
+		<td >Start</td>
+		<td >End</td>
 
 	</tr>
 	<tbody>
@@ -34,12 +34,12 @@
 				<td>
 					@projekt.End
 				</td>
+				
 			</tr>
 		}
 	</tbody>
 </table>
 
-<div>
-	<a asp-controller="Projects" asp-action="Index" class="nav-link FontColor">New Projects</a>
 
-</div>
+<a asp-action="AddProject" class="btn btn-primary">Add New  Projects</a>
+

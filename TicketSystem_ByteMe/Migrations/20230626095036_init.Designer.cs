@@ -12,8 +12,8 @@ using TicketSystem_ByteMe.Models;
 namespace TicketSystem_ByteMe.Migrations
 {
     [DbContext(typeof(TicketSystemDBContext))]
-    [Migration("20230623084156_Init")]
-    partial class Init
+    [Migration("20230626095036_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

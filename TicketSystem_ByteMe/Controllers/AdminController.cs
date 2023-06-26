@@ -19,10 +19,26 @@ namespace TicketSystem_ByteMe.Home
       return View();
     }
 
-    [HttpGet]
     public IActionResult ManageProjects()
     {
+      var projeckts = repo.Projects.ToList();
       return View(repo.Projects);
+    }
+
+    [HttpGet]
+    public IActionResult AddProject()
+    {
+      return View();
+    }
+    [HttpPost]
+    public IActionResult AddProject(Project project)
+    {
+      if (ModelState.IsValid)
+      {
+        repo.AddProject(project);
+        return RedirectToAction("ManageProjects");
+      }
+      return View(project);
     }
 
     public IActionResult ShowEmployees()
@@ -34,9 +50,6 @@ namespace TicketSystem_ByteMe.Home
     [HttpGet]
     public IActionResult AddEmployee()
     {
-      var jobtitle = Enum.GetValues(typeof(JobTitle)).Cast<JobTitle>().ToList();
-      ViewBag.jobtitle = new SelectList(jobtitle, "jobtitle");
-
       return View();
     }
 

@@ -30,3 +30,19 @@ tr:hover {
 td a {
   display: block;
 }
+.imghover img:last-child {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imghover:hover img:last-child {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imghover:hover img:first-child {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
