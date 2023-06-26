@@ -1,22 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Principal;
+
 namespace TicketSystem_ByteMe.Models
 {
-public enum JobTitle
-{
-  Developer,
-  Tester
-}
+    public enum JobTitle
+    {
+      Developer,
+      Tester
+    }
+
   public class Employee
   {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int EmployeeID { get; set; }
-
+    [Required(ErrorMessage = "This field is required")]
     public string FirstName { get; set; }
 
+    [Required(ErrorMessage = "This field is required")]
     public string LastName { get; set; }
 
+    [Required(ErrorMessage = "This field is required")]
     public JobTitle JobTitle { get; set; }
+
+
   }
 }

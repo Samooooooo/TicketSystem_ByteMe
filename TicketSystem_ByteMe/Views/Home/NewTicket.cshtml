@@ -9,7 +9,7 @@
     </div>
     <div class="card-body form-group">
       <span asp-validation-for="Project"></span>
-      <label asp-for="Project.ProjectID">Project: </label>
+      <label>Project: </label>
       <select asp-for="Project.ProjectID" asp-items="@ViewBag.Project" class="form-control">
         <option selected disabled value="">...</option>
       </select>

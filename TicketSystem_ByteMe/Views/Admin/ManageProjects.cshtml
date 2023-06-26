@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IQueryable<Project>
+
+<table>
+	<thead class="">
+		<tr>
+			<th>Projekt</th>
+		</tr>
+	</thead>
+	<tr>
+		<td class="card-body form-group">ProjectId</td>
+		<td class="card-body form-group">Title</td>
+		<td class="card-body form-group">Description</td>
+		<td class="card-body form-group">Start</td>
+		<td class="card-body form-group">End</td>
+
+	</tr>
+	<tbody>
+		@foreach (var projekt in Model)
+		{
+			<tr>
+				<td>
+					@projekt.ProjectID
+				</td>
+				
+				<td>
+					@projekt.Title
+				</td>
+				<td>
+					@projekt.Description
+				</td>
+				<td>
+					@projekt.Start
+				</td>
+				<td>
+					@projekt.End
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<div>
+	<a asp-controller="Projects" asp-action="Index" class="nav-link FontColor">New Projects</a>
+
+</div>
