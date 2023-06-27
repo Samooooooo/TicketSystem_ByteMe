@@ -19,8 +19,8 @@ namespace TicketSystem_ByteMe.Home
     {
       var employees = repo.Employees.Select(n => new { Name = n.LastName + ' ' + n.FirstName, ID = n.EmployeeID.ToString() });
       var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
-      ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
       ViewBag.Employee = new SelectList(employees, "ID", "Name");
+      ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
 
     }
     public IActionResult Index()

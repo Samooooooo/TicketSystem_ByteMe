@@ -81,10 +81,30 @@ namespace TicketSystem_ByteMe.Home
       repo.EndProject(id);
       return RedirectToAction("ShowProjects");
     }
-    public IActionResult DeleteProject(int id) 
+    public IActionResult DeleteProject(Project project) 
     {
-      repo.RemoveProject(id);
+      repo.RemoveProject(project);
       return RedirectToAction("ShowProjects");
+    }
+    public IActionResult EmployeeDetail(int id)
+    {
+      return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
+    }
+    public IActionResult DeleteEmployee(Employee employee)
+    {
+      repo.RemoveEmployee(employee);
+      return RedirectToAction("ShowEmployee");
+    }
+    [HttpGet]
+    public IActionResult EditEmployee(int id)
+    {
+      return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
+    }
+    [HttpPost]
+    public IActionResult EditEmployee(Employee employee)
+    {
+      repo.EditEmployee(employee);
+      return RedirectToAction("Home");
     }
   }
 }

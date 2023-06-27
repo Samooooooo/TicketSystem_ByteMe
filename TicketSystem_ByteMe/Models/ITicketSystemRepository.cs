@@ -7,12 +7,14 @@
     IQueryable<Ticket> Tickets { get; }
 
     public void AddEmployee(Employee employee);
-    public void AddTicket(Ticket ticket);
-    public void EditTicket(Ticket ticket);
-    public void SolvedTicket(int id);
     public void AddProject(Project project);
+    public void AddTicket(Ticket ticket);
+    public void EditEmployee(Employee employee);
     public void EditProject(Project project);
-    public void EndProject(int id);
+    public void EditTicket(Ticket ticket);
+    public void RemoveEmployee(Employee employee);
     public void RemoveProject(Project project);
+    public void SolvedTicket(int id);
+    public void EndProject(int id);
   }
 }

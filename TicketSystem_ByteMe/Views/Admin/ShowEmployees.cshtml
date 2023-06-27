@@ -16,10 +16,13 @@
       @foreach (var employee in Model)
       {
         <tr>
-          <td>@employee.EmployeeID</td>
-          <td>@employee.FirstName</td>
-          <td>@employee.LastName</td>
-          <td>@employee.JobTitle</td>
+          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.EmployeeID</a></td>
+          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.FirstName</a></td>
+          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.LastName</a></td>
+          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.JobTitle</a></td>
+          <td>
+            <a class="btn btn-outline-dark" asp-action="EditEmployee" asp-route-id="@employee.EmployeeID">Edit</a>
+          </td>
         </tr>
       }
     </tbody>

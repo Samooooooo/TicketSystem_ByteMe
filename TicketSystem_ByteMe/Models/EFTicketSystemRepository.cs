@@ -16,6 +16,16 @@ namespace TicketSystem_ByteMe.Models
     public IQueryable<Employee> Employees => ctx.Employees;
     public IQueryable<Ticket> Tickets => ctx.Tickets;
 
+    public void AddEmployee(Employee employee)
+    {
+      ctx.Employees.Add(employee);
+      ctx.SaveChanges();
+    }
+    public void AddProject(Project project)
+    {
+      ctx.Projects.Add(project);
+      ctx.SaveChanges();
+    }
     public void AddTicket(Ticket ticket)
     {
       ctx.Tickets.Add(ticket);
@@ -39,16 +49,6 @@ namespace TicketSystem_ByteMe.Models
       ctx.SaveChanges();
     }
 
-    public void AddEmployee(Employee employee)
-    {
-      ctx.Employees.Add(employee);
-      ctx.SaveChanges();
-    }
-    public void AddProject(Project project)
-    {
-      ctx.Projects.Add(project);
-      ctx.SaveChanges();
-    }
     public void EditProject(Project project)
     { 
       Project oldProject = ctx.Projects.FirstOrDefault(p => p.ProjectID == project.ProjectID);
@@ -65,11 +65,25 @@ namespace TicketSystem_ByteMe.Models
       ctx.Projects.Update(oldProject);
       ctx.SaveChanges();
     }
-    //public void RemoveProject(int id)
-    //{
-    //  ctx.Remove().;
-    //  ctx.SaveChanges();
-    //}
+    public void RemoveProject(Project project)
+    {
+      ctx.Remove(project);
+      ctx.SaveChanges();
+    }
+    public void RemoveEmployee(Employee employee)
+    {
+      ctx.Remove(employee);
+      ctx.SaveChanges();
+    }
+    public void EditEmployee(Employee employee)
+    {
+      Employee oldEmployee = ctx.Employees.FirstOrDefault(p => p.EmployeeID == employee.EmployeeID);
+      oldEmployee.FirstName = employee.FirstName;
+      oldEmployee.LastName = employee.LastName;
+      oldEmployee.JobTitle = employee.JobTitle;
+      ctx.Employees.Update(oldEmployee);
+      ctx.SaveChanges();
+    }
   }
 }
 

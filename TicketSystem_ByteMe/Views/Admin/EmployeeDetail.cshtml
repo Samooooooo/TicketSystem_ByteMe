@@ -1,0 +1,15 @@
+﻿@model Employee
+
+<div class="card">
+  <div class="card-header">
+    ID: @Model.EmployeeID
+  </div>
+  <div class="card-body">
+    <div class="card-title fw-bold text-center">
+      @Model.FirstName @Model.LastName
+      </div>
+    <p class="card-text">Job Title: @Model.JobTitle</p>
+  </div>
+</div>
+<a asp-action="ShowEmployees" class="btn btn-dark">Back</a> <a class=" btn btn-danger" asp-action="DeleteEmployee">Delete</a>
+
