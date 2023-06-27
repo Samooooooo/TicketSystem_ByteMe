@@ -12,8 +12,8 @@
     public void EditEmployee(Employee employee);
     public void EditProject(Project project);
     public void EditTicket(Ticket ticket);
-    public void RemoveEmployee(Employee employee);
-    public void RemoveProject(Project project);
+    public void RemoveEmployee(int id);
+    public void RemoveProject(int id);
     public void SolvedTicket(int id);
     public void EndProject(int id);
   }

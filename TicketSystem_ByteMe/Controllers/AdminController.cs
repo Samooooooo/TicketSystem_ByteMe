@@ -86,14 +86,14 @@ namespace TicketSystem_ByteMe.Home
       repo.EditProject(project);
       return RedirectToAction("ShowProjects");
     }
-    public IActionResult DeleteEmployee(Employee employee)
+    public IActionResult DeleteEmployee(int id)
     {
-      repo.RemoveEmployee(employee);
+      repo.RemoveEmployee(id);
       return RedirectToAction("ShowEmployees");
     }
-    public IActionResult DeleteProject(Project project) 
+    public IActionResult DeleteProject(int id) 
     {
-      repo.RemoveProject(project);
+      repo.RemoveProject(id);
       return RedirectToAction("ShowProjects");
     }
 

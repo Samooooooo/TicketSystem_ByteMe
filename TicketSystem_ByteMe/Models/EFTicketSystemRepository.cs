@@ -57,14 +57,14 @@ namespace TicketSystem_ByteMe.Models
       ctx.Update(oldTicket);
       ctx.SaveChanges();
     }
-  public void RemoveEmployee(Employee employee)
+  public void RemoveEmployee(int id)
     {
-      ctx.Remove(employee);
+      ctx.Remove(Employees.FirstOrDefault(e => e.EmployeeID == id));
       ctx.SaveChanges();
     }
-  public void RemoveProject(Project project)
+  public void RemoveProject(int id)
     {
-      ctx.Remove(project);
+      ctx.Remove(Projects.FirstOrDefault(p => p.ProjectID == id));
       ctx.SaveChanges();
     }
     public void SolvedTicket(int id)
