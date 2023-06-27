@@ -16,6 +16,7 @@ namespace TicketSystem_ByteMe.Models
     public int EmployeeID { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public string FirstName { get; set; }
+    public bool Terminated { get; set; } = false;
 
     [Required(ErrorMessage = "This field is required")]
     public string LastName { get; set; }

@@ -18,6 +18,7 @@ namespace TicketSystem_ByteMe.Migrations
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Terminated = table.Column<bool>(type: "bit", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JobTitle = table.Column<int>(type: "int", nullable: false)
                 },

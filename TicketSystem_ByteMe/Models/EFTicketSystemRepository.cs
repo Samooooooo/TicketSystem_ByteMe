@@ -67,6 +67,14 @@ namespace TicketSystem_ByteMe.Models
       ctx.Remove(Projects.FirstOrDefault(p => p.ProjectID == id));
       ctx.SaveChanges();
     }
+      public void TerminateEmployee(int id)
+    {
+      Employee oldEmployee = ctx.Employees.FirstOrDefault(p => p.EmployeeID == id);
+      oldEmployee.FirstName = "[Terminated]" + ' ' + oldEmployee.FirstName;
+      oldEmployee.Terminated = true;
+      ctx.Employees.Update(oldEmployee);
+      ctx.SaveChanges();
+    }
     public void SolvedTicket(int id)
     {
       Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == id);

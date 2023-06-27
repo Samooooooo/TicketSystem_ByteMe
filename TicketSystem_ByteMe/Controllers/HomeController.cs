@@ -17,7 +17,7 @@ namespace TicketSystem_ByteMe.Home
     }
     private void GenerateValues()
     {
-      var employees = repo.Employees.Select(n => new { Name = n.LastName + ' ' + n.FirstName, ID = n.EmployeeID.ToString() });
+      var employees = repo.Employees.Where(t => t.Terminated == false).Select(n => new { Name = n.FirstName + ' ' + n.LastName, ID = n.EmployeeID.ToString() });
       var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
       ViewBag.Employee = new SelectList(employees, "ID", "Name");
       ViewBag.Project = new SelectList(projects, "ProjectID", "Title");

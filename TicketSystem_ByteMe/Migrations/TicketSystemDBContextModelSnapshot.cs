@@ -41,6 +41,9 @@ namespace TicketSystem_ByteMe.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Terminated")
+                        .HasColumnType("bit");
+
                     b.HasKey("EmployeeID");
 
                     b.ToTable("Employees");

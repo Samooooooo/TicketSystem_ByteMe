@@ -28,6 +28,7 @@ namespace TicketSystem_ByteMe.Home
     }
     public IActionResult EmployeeDetail(int id)
     {
+      GenerateValuesEmployees();
       return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
     }
     public IActionResult ProjectDetail(int id)
@@ -97,7 +98,11 @@ namespace TicketSystem_ByteMe.Home
       repo.RemoveProject(id);
       return RedirectToAction("ShowProjects");
     }
-
+    public IActionResult TerminateEmployee(int id)
+    {
+      repo.TerminateEmployee(id);
+      return RedirectToAction("ShowEmployees");
+    }
     public IActionResult EndProject(int id)
     {
       repo.EndProject(id);
@@ -106,6 +111,11 @@ namespace TicketSystem_ByteMe.Home
     public void GenerateValuesTickets()
     {
       ViewBag.TicketsProjectID = repo.Tickets.Select(n => n.Project.ProjectID).ToList(); 
+    }
+    public void GenerateValuesEmployees()
+    {
+      ViewBag.TicketsAssignedTo = repo.Tickets.Select(a => a.AssignedTo.EmployeeID).ToList();
+      ViewBag.TicketsCreatedBy = repo.Tickets.Select(a => a.CreatedBy.EmployeeID).ToList();
     }
   }
 }

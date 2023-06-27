@@ -1,4 +1,6 @@
-﻿namespace TicketSystem_ByteMe.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace TicketSystem_ByteMe.Models
 {
   public interface ITicketSystemRepository
   {
@@ -14,6 +16,7 @@
     public void EditTicket(Ticket ticket);
     public void RemoveEmployee(int id);
     public void RemoveProject(int id);
+    public void TerminateEmployee(int id);
     public void SolvedTicket(int id);
     public void EndProject(int id);
   }

@@ -6,7 +6,7 @@
   </div>
   <div class="card-body">
     <div class="card-title fw-bold text-center">
-      Project @Model.Project.Title - Ticket assigned to @Model.AssignedTo.LastName @Model.AssignedTo.FirstName
+      Project @Model.Project.Title - Ticket assigned to @Model.AssignedTo.FirstName @Model.AssignedTo.LastName
     </div>
     <form asp-action="EditTicket" method="post">
       <span asp-validation-for="AssignedTo"></span>
@@ -26,7 +26,7 @@
     <a asp-action="TicketList" class="btn btn-primary">Back</a>
   </div>
   <div class="card-footer text-muted">
-    Created @Model.CreatedAt by @Model.CreatedBy.LastName @Model.CreatedBy.FirstName
+    Created @Model.CreatedAt by @Model.CreatedBy.FirstName @Model.CreatedBy.LastName
     @if (Model.SolvedAt != null)
     {
       @:Solved @Model.SolvedAt

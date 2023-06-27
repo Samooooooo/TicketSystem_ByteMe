@@ -7,11 +7,26 @@
   <div class="card-body">
     <div class="card-title fw-bold text-center">
       @Model.FirstName @Model.LastName
-      </div>
+    </div>
     <p class="card-text">Job Title: @Model.JobTitle</p>
   </div>
 </div>
 <a asp-action="ShowEmployees" class="btn btn-dark">Back</a>
 
-<a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
+@if (!ViewBag.TicketsAssignedTo.Contains(Model.EmployeeID) | !ViewBag.TicketsCreatedBy.Contains(Model.EmployeeID))
+{
+  <a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
+}
+else
+{
+  if (Model.Terminated == false)
+  {
+    <a class=" btn btn-danger" asp-action="TerminateEmployee" asp-route-id="@Model.EmployeeID">Terminate</a>
+  }
+  else
+  {
+    <a class=" btn btn-outline-secondary" title="already terminated">Terminate</a>
+  }
+}
+
 

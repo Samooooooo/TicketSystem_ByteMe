@@ -12,7 +12,7 @@ using TicketSystem_ByteMe.Models;
 namespace TicketSystem_ByteMe.Migrations
 {
     [DbContext(typeof(TicketSystemDBContext))]
-    [Migration("20230627083938_init")]
+    [Migration("20230627103855_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -43,6 +43,9 @@ namespace TicketSystem_ByteMe.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Terminated")
+                        .HasColumnType("bit");
 
                     b.HasKey("EmployeeID");
 
