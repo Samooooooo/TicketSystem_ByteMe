@@ -3,7 +3,7 @@
 <h1>Add New Employee</h1>
 
 <div class="container m-5">
-  <form asp-action="AddEmployee" method="post">
+  <form asp-action="NewEmployee" method="post">
     <div>
       <label>First Name:</label>
       <input asp-for="FirstName" />
@@ -18,10 +18,10 @@
       <label>Job Title: </label>
       <select asp-for="JobTitle">
         <option selected disabled value="">...</option>
-        <option selected value="@JobTitle.Developer">@JobTitle.Developer</option>
-        <option selected value="@JobTitle.Tester">@JobTitle.Tester</option>
+        <option  value="@JobTitle.Developer">@JobTitle.Developer</option>
+        <option  value="@JobTitle.Tester">@JobTitle.Tester</option>
       </select>
-      <span asp-validation-for="FirstName"></span>
+      <span asp-validation-for="JobTitle"></span>
     </div>
     <button type="submit">Add Employee</button>
   </form>

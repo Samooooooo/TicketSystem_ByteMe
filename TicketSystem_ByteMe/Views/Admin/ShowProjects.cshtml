@@ -1,20 +1,18 @@
 ﻿@model IQueryable<Project>
+
 <h4>Project List</h4>
+
 <div class="container">
   <table class="table table-bordered table-striped">
     <thead>
-      <tr>
-        <th>project</th>
-      </tr>
-    </thead>
     <tr>
-      <td>ProjectId</td>
-      <td>Title</td>
-      <td>Description</td>
-      <td>Start</td>
-      <td>End</td>
-
+      <th>ProjectId</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start</th>
+      <th></th>
     </tr>
+    </thead>
     <tbody>
       @foreach (var project in Model)
       {
@@ -30,9 +28,6 @@
           </td>
           <td>
             <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Start</a>
-          </td>
-          <td>
-            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.End</a>
           </td>
           @if (project.End is null)
           {

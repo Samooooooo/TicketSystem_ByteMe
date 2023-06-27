@@ -1,0 +1,29 @@
+﻿@model Employee
+
+
+<h1>Edit Employee</h1>
+
+<div class="container m-5">
+  <form asp-action="EditEmployee" method="post">
+    <input type="hidden" asp-for="EmployeeID" />
+    <div>
+      <label>First Name:</label>
+      <input asp-for="FirstName" style="left:151px ; position:fixed " />
+      <span asp-validation-for="FirstName"></span>
+    </div>
+    <div>
+      <label>Last Name:</label>
+      <input asp-for="LastName" style="left:151px ; position:fixed " />
+      <span asp-validation-for="LastName"></span>
+    </div>
+    <div>
+      <label>Job Title:</label>
+      <select asp-for="JobTitle">
+        <option  value="@JobTitle.Developer">@JobTitle.Developer</option>
+        <option  value="@JobTitle.Tester">@JobTitle.Tester</option>
+      </select>
+    </div>
+    <button type="submit">Edit Employee</button>
+  </form>
+</div>
+<a class="btn btn-outline-secondary" asp-action="home">back</a>

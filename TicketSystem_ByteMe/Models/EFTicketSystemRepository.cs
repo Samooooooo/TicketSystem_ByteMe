@@ -31,24 +31,15 @@ namespace TicketSystem_ByteMe.Models
       ctx.Tickets.Add(ticket);
       ctx.SaveChanges();
     }
-
-    public void EditTicket(Ticket ticket)
+   public void EditEmployee(Employee employee)
     {
-      Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
-      oldTicket.Description = ticket.Description;
-      oldTicket.AssignedTo = ticket.AssignedTo;
-      ctx.Update(oldTicket);
+      Employee oldEmployee = ctx.Employees.FirstOrDefault(p => p.EmployeeID == employee.EmployeeID);
+      oldEmployee.FirstName = employee.FirstName;
+      oldEmployee.LastName = employee.LastName;
+      oldEmployee.JobTitle = employee.JobTitle;
+      ctx.Employees.Update(oldEmployee);
       ctx.SaveChanges();
     }
-
-    public void SolvedTicket(int id)
-    {
-      Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == id);
-      oldTicket.SolvedAt = DateTime.Now;
-      ctx.Update(oldTicket);
-      ctx.SaveChanges();
-    }
-
     public void EditProject(Project project)
     { 
       Project oldProject = ctx.Projects.FirstOrDefault(p => p.ProjectID == project.ProjectID);
@@ -58,32 +49,38 @@ namespace TicketSystem_ByteMe.Models
       ctx.Projects.Update(oldProject);
       ctx.SaveChanges();
     }
+    public void EditTicket(Ticket ticket)
+    {
+      Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
+      oldTicket.Description = ticket.Description;
+      oldTicket.AssignedTo = ticket.AssignedTo;
+      ctx.Update(oldTicket);
+      ctx.SaveChanges();
+    }
+  public void RemoveEmployee(Employee employee)
+    {
+      ctx.Remove(employee);
+      ctx.SaveChanges();
+    }
+  public void RemoveProject(Project project)
+    {
+      ctx.Remove(project);
+      ctx.SaveChanges();
+    }
+    public void SolvedTicket(int id)
+    {
+      Ticket oldTicket = ctx.Tickets.FirstOrDefault(t => t.TicketID == id);
+      oldTicket.SolvedAt = DateTime.Now;
+      ctx.Update(oldTicket);
+      ctx.SaveChanges();
+    }
     public void EndProject(int id)
     {
       Project oldProject = ctx.Projects.FirstOrDefault(p => p.ProjectID == id);
       oldProject.End = DateTime.Now;
       ctx.Projects.Update(oldProject);
       ctx.SaveChanges();
-    }
-    public void RemoveProject(Project project)
-    {
-      ctx.Remove(project);
-      ctx.SaveChanges();
-    }
-    public void RemoveEmployee(Employee employee)
-    {
-      ctx.Remove(employee);
-      ctx.SaveChanges();
-    }
-    public void EditEmployee(Employee employee)
-    {
-      Employee oldEmployee = ctx.Employees.FirstOrDefault(p => p.EmployeeID == employee.EmployeeID);
-      oldEmployee.FirstName = employee.FirstName;
-      oldEmployee.LastName = employee.LastName;
-      oldEmployee.JobTitle = employee.JobTitle;
-      ctx.Employees.Update(oldEmployee);
-      ctx.SaveChanges();
-    }
+    } 
   }
 }
 
