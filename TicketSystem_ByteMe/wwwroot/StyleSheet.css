@@ -43,8 +43,7 @@
 .tr{
   height: 80px;
 }
-.tableset{
-  text-align:center;
-  row-gap:inherit;
+.tableset {
+  text-align: center;
 }
 
