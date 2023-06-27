@@ -14,13 +14,18 @@ namespace TicketSystem_ByteMe.Models
     [Required(ErrorMessage = "This field is required")]
     public string Description { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public Project Project { get; set; }
     public DateTime CreatedAt { get; set; }
+
     [Required(ErrorMessage = "This field is required")]
     [DeleteBehavior(DeleteBehavior.NoAction)]
     public Employee CreatedBy { get; set; }
+
     [Required(ErrorMessage = "This field is required")]
+    [DeleteBehavior(DeleteBehavior.NoAction)]
     public Employee AssignedTo { get; set; }
+
     public DateTime? SolvedAt { get; set; }
   }
 }

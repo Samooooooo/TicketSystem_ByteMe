@@ -120,7 +120,7 @@ namespace TicketSystem_ByteMe.Migrations
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "AssignedTo")
                         .WithMany()
                         .HasForeignKey("AssignedToEmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TicketSystem_ByteMe.Models.Employee", "CreatedBy")
@@ -132,7 +132,7 @@ namespace TicketSystem_ByteMe.Migrations
                     b.HasOne("TicketSystem_ByteMe.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("AssignedTo");

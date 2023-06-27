@@ -11,5 +11,7 @@
     <p class="card-text">Job Title: @Model.JobTitle</p>
   </div>
 </div>
-<a asp-action="ShowEmployees" class="btn btn-dark">Back</a> <a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
+<a asp-action="ShowEmployees" class="btn btn-dark">Back</a>
+
+<a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
 

@@ -63,8 +63,7 @@ namespace TicketSystem_ByteMe.Migrations
                         name: "FK_Tickets_Employees_AssignedToEmployeeID",
                         column: x => x.AssignedToEmployeeID,
                         principalTable: "Employees",
-                        principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmployeeID");
                     table.ForeignKey(
                         name: "FK_Tickets_Employees_CreatedByEmployeeID",
                         column: x => x.CreatedByEmployeeID,
@@ -74,8 +73,7 @@ namespace TicketSystem_ByteMe.Migrations
                         name: "FK_Tickets_Projects_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Projects",
-                        principalColumn: "ProjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProjectID");
                 });
 
             migrationBuilder.CreateIndex(

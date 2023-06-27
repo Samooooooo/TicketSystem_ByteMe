@@ -21,5 +21,13 @@
     }
   </div>
 </div>
-<a asp-action="ShowProjects" class="btn btn-dark">Back</a> <a class=" btn btn-danger" asp-action="DeleteProject" asp-route-id="@Model.ProjectID">Delete</a>
+<a asp-action="ShowProjects" class="btn btn-dark">Back</a>
+@if (!ViewBag.TicketsProjectID.Contains(Model.ProjectID))
+{
+  <a class=" btn btn-danger" asp-action="DeleteProject" asp-route-id="@Model.ProjectID">Delete</a>
+}
+else
+{
+  <a class=" btn btn-outline-secondary"  title="project has already assigned ticket" disabled>Delete</a>
+}
 
