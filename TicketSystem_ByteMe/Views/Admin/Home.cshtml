@@ -1,24 +1,24 @@
 ﻿@model EFTicketSystemRepository
-<div class="text-center">
+<div class="text-center m-4">
 
 
-  <h1>ByteMe Ticketsystem</h1>
+  <h1 class="m-4">ByteMe Ticketsystem</h1>
 
   <div class="container imghover col-2">
-    <img src="~/img/ticketbite_red.png" height="200" width="200" />
+    <img src="~/img/ticketbite_red.png" height="200" width="200"/>
     <img src="~/img/ticketbite2_red.png" height="200" width="200" />
   </div>
 
 
 
-  <h2>@DateTime.Now.ToShortDateString()</h2>
+  <h2 class="m-4">@DateTime.Now.ToShortDateString()</h2>
 
 
-  <div class="container">
+  <div class="container p-4">
 
-    <div class="row">
+    <div class="row m-4">
       <div class="col-4">
-        <h4>Employee</h4>
+        <a asp-action="NewEmployee" style="color: red;"><h4>Employees</h4></a>
         <table class="table table-bordered">
           <tr>
             <td>Total</td>
@@ -35,7 +35,7 @@
         </table>
       </div>
       <div class="col-4">
-        <h4>Project</h4>
+        <a asp-action="NewProject" style="color: red;"><h4>Projects</h4></a>
         <table class="table table-bordered">
           <tr>
             <td>Total</td>
@@ -52,7 +52,9 @@
         </table>
       </div>
       <div class="col-4">
-        <h4>Tickets</h4>
+        <a asp-action="NewTicket" asp-controller="Home" style="color: red;"><h4>Tickets</h4></a>
+    
+
         <table class="table table-bordered">
           <tr>
             <td>Total</td>
