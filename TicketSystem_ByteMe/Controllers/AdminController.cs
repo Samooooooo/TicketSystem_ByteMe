@@ -15,7 +15,7 @@ namespace TicketSystem_ByteMe.Home
 
     public IActionResult Home()
     {
-      return View();
+      return View(repo);
     }
     public IActionResult ShowEmployees()
     {
