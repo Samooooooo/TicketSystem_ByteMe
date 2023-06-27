@@ -13,11 +13,7 @@
 </div>
 <a asp-action="ShowEmployees" class="btn btn-dark">Back</a>
 
-@if (!ViewBag.TicketsAssignedTo.Contains(Model.EmployeeID) | !ViewBag.TicketsCreatedBy.Contains(Model.EmployeeID))
-{
-  <a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
-}
-else
+@if (ViewBag.TicketsAssignedTo.Contains(Model.EmployeeID) || ViewBag.TicketsCreatedBy.Contains(Model.EmployeeID))
 {
   if (Model.Terminated == false)
   {
@@ -27,6 +23,10 @@ else
   {
     <a class=" btn btn-outline-secondary" title="already terminated">Terminate</a>
   }
+}
+else
+{
+  <a class=" btn btn-danger" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
 }
 
 
