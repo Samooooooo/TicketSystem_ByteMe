@@ -1,28 +1,31 @@
 ﻿@model Employee
-
-<h1>Add New Employee</h1>
-
 <div class="container m-5">
   <form asp-action="NewEmployee" method="post">
-    <div>
-      <label>First Name:</label>
-      <input asp-for="FirstName" />
-      <span asp-validation-for="FirstName"></span>
+    <div class="card">
+      <div class="card-header">
+        <label class="mb-1">Add new Project</label>
+      </div>
+      <div class="card-body row text-center">
+        <label class="col-4 text-start">First Name:</label>
+        <input class="col-4 mb-1" asp-for="FirstName" />
+        <span class="col-4 text-start" asp-validation-for="FirstName"></span>
+        <label class="col-4 text-start">Last Name:</label>
+        <input class="col-4 mb-1" asp-for="LastName" />
+        <span class="col-4 text-start" asp-validation-for="FirstName"></span>
+        <label class="col-4 text-start">Job Title: </label>
+        <select class="col-4 mb-1" asp-for="JobTitle">
+          <option selected disabled value="">...</option>
+          <option value="@JobTitle.Developer">@JobTitle.Developer</option>
+          <option value="@JobTitle.Tester">@JobTitle.Tester</option>
+        </select>
+        <span class="col-4 text-start" asp-validation-for="JobTitle"></span>
+      </div>
+      <div>
+        <button class="newButton m-3" type="submit">Add Employee</button>
+      </div>
     </div>
-    <div>
-      <label>Last Name:</label>
-      <input asp-for="LastName" />
-      <span asp-validation-for="FirstName"></span>
-    </div>
-    <div>
-      <label>Job Title: </label>
-      <select asp-for="JobTitle">
-        <option selected disabled value="">...</option>
-        <option  value="@JobTitle.Developer">@JobTitle.Developer</option>
-        <option  value="@JobTitle.Tester">@JobTitle.Tester</option>
-      </select>
-      <span asp-validation-for="JobTitle"></span>
-    </div>
-    <button type="submit">Add Employee</button>
   </form>
+  <div class="pt-3 p-1">
+    <a class="BackButton" asp-action="ShowEmployees">Back</a>
+  </div>
 </div>

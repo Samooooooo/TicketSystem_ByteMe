@@ -44,11 +44,6 @@ footer {
   font-weight: bold;
 }
 
-.imghover img:last-child {
-  display: none;
-  margin-left: auto;
-  margin-right: auto;
-}
 .line {
   background-color: #00ADE5;
   height: 1px;
@@ -64,6 +59,12 @@ footer {
   font-weight: normal;
   font-size: 14px;
   text-align:center;
+}
+
+.imghover img:last-child {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .imghover:hover img:last-child {
@@ -188,7 +189,6 @@ thead {
   }
 .SolvedButton {
   color: #99999c;
-
   padding: 3px 7px 3px 7px;
   border-top: 2px solid #CCCCCC;
   border-right: 2px solid #27cc06;

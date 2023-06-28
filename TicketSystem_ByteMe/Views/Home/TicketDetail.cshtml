@@ -16,7 +16,7 @@
       <p class="card-text">@Model.Description</p>
       @if (Model.SolvedAt == null)
       {
-        <a class="SolvedButton" asp-action="SolvedTicket" asp-route-id="@Model.TicketID" >mark as solved</a>
+        <a class="SolvedButton" asp-action="SolvedTicket" asp-route-id="@Model.TicketID">mark as solved</a>
       }
     </div>
     <div class="card-footer text-muted createdBy">

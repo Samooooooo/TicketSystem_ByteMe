@@ -1,29 +1,32 @@
 ﻿@model Employee
 
-
-<h1>Edit Employee</h1>
-
 <div class="container m-5">
   <form asp-action="EditEmployee" method="post">
     <input type="hidden" asp-for="EmployeeID" />
-    <div>
-      <label>First Name:</label>
-      <input asp-for="FirstName" style="left:151px ; position:fixed " />
-      <span asp-validation-for="FirstName"></span>
+    <div class="card">
+      <div class="card-header">
+        <label class="mb-1">Add new Project</label>
+      </div>
+      <div class="card-body row text-center">
+        <label class="col-4 text-start">First Name:</label>
+        <input class="col-4 mb-1" asp-for="FirstName" />
+        <span class="col-4 text-start" asp-validation-for="FirstName"></span>
+        <label class="col-4 text-start">Last Name:</label>
+        <input class="col-4 mb-1" asp-for="LastName" />
+        <span class="col-4 text-start" asp-validation-for="FirstName"></span>
+        <label class="col-4 text-start">Job Title: </label>
+        <select class="col-4 mb-1" asp-for="JobTitle">
+          <option value="@JobTitle.Developer">@JobTitle.Developer</option>
+          <option value="@JobTitle.Tester">@JobTitle.Tester</option>
+        </select>
+        <span class="col-4 text-start" asp-validation-for="JobTitle"></span>
+      </div>
+      <div>
+        <button class="newButton m-3" type="submit">Edit Employee</button>
+      </div>
     </div>
-    <div>
-      <label>Last Name:</label>
-      <input asp-for="LastName" style="left:151px ; position:fixed " />
-      <span asp-validation-for="LastName"></span>
-    </div>
-    <div>
-      <label>Job Title:</label>
-      <select asp-for="JobTitle">
-        <option  value="@JobTitle.Developer">@JobTitle.Developer</option>
-        <option  value="@JobTitle.Tester">@JobTitle.Tester</option>
-      </select>
-    </div>
-    <button class="btn btn-link btn-rounded btn-sm fw-bold" type="submit">Edit Employee</button>
   </form>
+  <div class="pt-3 p-1">
+    <a class="BackButton" asp-action="ShowEmployees">Back</a>
+  </div>
 </div>
-<a class="btn btn-outline-secondary" asp-action="ShowEmployees">back</a>

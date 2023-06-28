@@ -29,8 +29,6 @@ footer {
   padding: 2px;
 }
 
-
-
 .FontColor {
   color: #99999c
 }
@@ -40,16 +38,29 @@ footer {
   }
 
 .field-validation-error {
-  color: red;
+  color: #00ade5;
   font-size: small;
   font-weight: bold;
 }
 
-.imghover img:last-child {
-  display: none;
-  margin-left: auto;
-  margin-right: auto;
+.line {
+  background-color: red;
+  height: 1px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
+.assignedTo {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.createdBy {
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+}
+
 
 .imghover img:last-child {
   display: none;
@@ -69,6 +80,16 @@ footer {
   margin-right: auto;
 }
 
+
+textarea {
+  margin-bottom: 1em;
+  width: 100%;
+  white-space: normal;
+}
+
+select {
+  margin-bottom: 1em;
+}
 
 thead {
   border-bottom: 4px solid red;
@@ -172,4 +193,84 @@ thead {
     border-left: 2px solid red;
     background-color: red;
     color: white;
+  }
+
+.DeleteButton {
+  color: #99999c;
+  padding: 3px 7px 3px 7px;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  border-left: 2px solid #CCCCCC;
+  border-radius: 7px;
+  transition: 0.35s;
+}
+
+  .DeleteButton:hover {
+    color: red;
+    border-top: 2px solid red;
+    border-right: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+    border-left: 2px solid red;
+    text-decoration: none;
+  }
+
+  .DeleteButton:active {
+    border-top: 2px solid red;
+    border-right: 2px solid red;
+    border-bottom: 2px solid red;
+    border-left: 2px solid red;
+    background-color: red;
+    color: #ffffff;
+  }
+
+.DeleteButtonDisabled {
+  color: #99999c;
+  padding: 3px 7px 3px 7px;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  border-left: 2px solid #CCCCCC;
+  border-radius: 7px;
+  transition: 0.35s;
+  text-decoration-line:line-through;
+}
+
+  .DeleteButtonDisabled:hover {
+    color: red;
+    border-top: 2px solid red;
+    border-right: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+    border-left: 2px solid red;
+    text-decoration: none;
+    text-decoration-line: line-through;
+  }
+
+.SolvedButton {
+  color: #99999c;
+  padding: 3px 7px 3px 7px;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid #27cc06;
+  border-bottom: 2px solid #27cc06;
+  border-left: 2px solid #CCCCCC;
+  border-radius: 7px;
+  transition: 0.35s;
+}
+
+  .SolvedButton:hover {
+    color: #27cc06;
+    border-top: 2px solid #27cc06;
+    border-right: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+    border-left: 2px solid #27cc06;
+    text-decoration: none;
+  }
+
+  .SolvedButton:active {
+    border-top: 2px solid #27cc06;
+    border-right: 2px solid #27cc06;
+    border-bottom: 2px solid #27cc06;
+    border-left: 2px solid #27cc06;
+    background-color: #27cc06;
+    color: #ffffff;
   }

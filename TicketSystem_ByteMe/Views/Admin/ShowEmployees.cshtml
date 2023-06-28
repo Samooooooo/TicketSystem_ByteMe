@@ -3,7 +3,7 @@
 <h4>Employee List</h4>
 
 <div class="container">
-  <table class="table table-bordered table-striped">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Employee ID</th>
@@ -16,17 +16,16 @@
       @foreach (var employee in Model)
       {
         <tr>
-          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.EmployeeID</a></td>
-          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.FirstName</a></td>
-          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.LastName</a></td>
-          <td><a asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.JobTitle</a></td>
+          <td><a class="aTableRow" asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.EmployeeID</a></td>
+          <td><a class="aTableRow"asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.FirstName</a></td>
+          <td><a class="aTableRow"asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.LastName</a></td>
+          <td><a class="aTableRow"asp-action="EmployeeDetail" asp-route-id="@employee.EmployeeID">@employee.JobTitle</a></td>
           <td>
-            <a class="btn btn-link btn-rounded btn-sm fw-bold" asp-action="EditEmployee" asp-route-id="@employee.EmployeeID">Edit</a>
+            <a class="aButton" asp-action="EditEmployee" asp-route-id="@employee.EmployeeID">Edit</a>
           </td>
         </tr>
       }
     </tbody>
   </table>
+<a class="newButton"asp-action="NewEmployee" >Add New Employee</a>
 </div>
-
-<a asp-action="NewEmployee" class="btn btn-primary">Add New Employee</a>
