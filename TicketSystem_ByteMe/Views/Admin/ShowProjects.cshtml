@@ -3,36 +3,45 @@
 <h4>Project List</h4>
 
 <div class="container">
-  <table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-      <th>ProjectId</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start</th>
-      <th></th>
-    </tr>
+  <table class="table table-hover">
+    <thead class="Thead">
+      <tr>
+        <th>ProjectId</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Start</th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
       @foreach (var project in Model)
       {
         <tr>
           <td>
-            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.ProjectID</a>
+            <a class="aTableRow" asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.ProjectID</a>
           </td>
           <td>
-            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Title</a>
+            <a class="aTableRow" asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Title</a>
           </td>
           <td>
-            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Description</a>
+            <a class="aTableRow" asp-action="ProjectDetail" asp-route-id="@project.ProjectID">
+              @if (@project.Description.Length > 20)
+              {
+                @project.Description.Substring(0, 20) @:...
+              }
+              else
+              {
+                @project.Description
+              }
+            </a>
           </td>
           <td>
-            <a asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Start</a>
+            <a class="aTableRow" asp-action="ProjectDetail" asp-route-id="@project.ProjectID">@project.Start</a>
           </td>
           @if (project.End is null)
           {
             <td>
-              <a class="btn btn-outline-dark" asp-action="EditProject" asp-route-id="@project.ProjectID">Edit</a>
+              <a class="aButton" asp-action="EditProject" asp-route-id="@project.ProjectID">Edit</a>
             </td>
           }
           else
@@ -48,8 +57,6 @@
       }
     </tbody>
   </table>
+  <a class="newButton" asp-action="NewProject">Add New Projects</a>
 </div>
-
-
-<a asp-action="NewProject" class="btn btn-primary">Add New Projects</a>
 

@@ -1,45 +1,45 @@
 ﻿@model IQueryable<Ticket>
-
-<div class="container p-4">
-  <table class="table table-bordered table-striped tableset">
-    <thead>
-      <tr>
-        <th>Projekt</th>
-        <th>Headline</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (var ticket in Model)
-      {
-        <tr class="tr">
-          <td>
-            <a asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a>
-          </td>
-          <td>
-            <a asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
-          </td>
-          @if (ticket.SolvedAt is null)
-          {
-            <td>
-              <a class="btn btn-outline-dark" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
-            </td>
-          }
-          else
-          {
-            <td>
-              <div>
-                <a class="btn btn-outline-success">Solved</a>
-                @ticket.SolvedAt
-              </div>
-            </td>
-          }
+  <div class="container p-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Projekt</th>
+          <th>Headline</th>
+          <th></th>
         </tr>
-      }
-    </tbody>
-  </table>
-  <div>
-    <a class="btn btn-outline-primary" asp-action="NewTicket">New Ticket</a>
-    @ViewBag.Employee
-    @ViewBag.Project
+      </thead>
+      <tbody>
+        @foreach (var ticket in Model)
+        {
+          <tr>
+            <td>
+              <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a>
+            </td>
+            <td>
+              <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
+            </td>
+            @if (ticket.SolvedAt is null)
+            {
+              <td>
+                <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
+              </td>
+            }
+            else
+            {
+              <td>
+                <div>
+                  <a class="btn btn-outline-success">Solved</a>
+                  @ticket.SolvedAt
+                </div>
+              </td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+    <div>
+      <a class="newButton" asp-action="NewTicket">New Ticket</a>
+      @ViewBag.Employee
+      @ViewBag.Project
+    </div>
   </div>
-</div>

@@ -14,14 +14,14 @@ namespace TicketSystem_ByteMe.Models
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int EmployeeID { get; set; }
-    [Required(ErrorMessage = "This field is required")]
+    [Required(ErrorMessage = "this field is required")]
     public string FirstName { get; set; }
     public bool Terminated { get; set; } = false;
 
-    [Required(ErrorMessage = "This field is required")]
+    [Required(ErrorMessage = "this field is required")]
     public string LastName { get; set; }
 
-    [Required(ErrorMessage = "This field is required")]
+    [Required(ErrorMessage = "this field is required")]
     public JobTitle JobTitle { get; set; }
 
 

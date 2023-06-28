@@ -1,36 +1,38 @@
 ﻿@model Ticket
-<div asp-validation-summary="All"></div>
-<form asp-action="NewTicket" method="post">
-  <div class="card">
-    <div class="card-header">
-      <span asp-validation-for="Headline"></span>
-      <label asp-for="Headline"></label>
-      <input asp-for="Headline" />
+  <div class="container p-4">
+    <form asp-action="NewTicket" method="post">
+      <div class="card">
+        <div class="card-header">
+          <label>Headline:</label>
+          <input asp-for="Headline" />
+          <span asp-validation-for="Headline"></span>
+        </div>
+        <div class="card-body form-group">
+          <label>Project: </label>
+          <span asp-validation-for="Project"></span>
+          <select asp-for="Project.ProjectID" asp-items="@ViewBag.Project" class="form-control">
+            <option selected disabled value="">...</option>
+          </select>
+          <label>Assigned To: </label>
+          <span asp-validation-for="AssignedTo"></span>
+          <select asp-for="AssignedTo.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
+            <option selected disabled>...</option>
+          </select>
+          <label>Description:</label>
+          <span asp-validation-for="Description"></span>
+          <div> <textarea asp-for="Description"></textarea></div>
+          <label>Created By: </label>
+          <span asp-validation-for="CreatedBy"></span>
+          <select asp-for="CreatedBy.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
+            <option selected disabled>...</option>
+          </select>
+
+          <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
+          <button class="newButton mt-2" type="submit">Submit Ticket</button>
+        </div>
+      </div>
+    </form>
+    <div class="pt-3 p-1">  
+      <a class="BackButton" asp-action="TicketList">Back</a>
     </div>
-    <div class="card-body form-group">
-      <span asp-validation-for="Project"></span>
-      <label>Project: </label>
-      <select asp-for="Project.ProjectID" asp-items="@ViewBag.Project" class="form-control">
-        <option selected disabled value="">...</option>
-      </select>
-      <span asp-validation-for="AssignedTo"></span>
-      <label asp-for="AssignedTo.EmployeeID">AssignedTo: </label>
-      <select asp-for="AssignedTo.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-        <option selected disabled>...</option>
-      </select>
-    </div>
-    <span asp-validation-for="Description"></span>
-    <label asp-for="Description"></label>
-    <textarea asp-for="Description"></textarea>
   </div>
-  <div class="card-footer text-muted">
-    <span asp-validation-for="CreatedBy"></span>
-    <label asp-for="CreatedBy.EmployeeID">CreatedBy: </label>
-    <select asp-for="CreatedBy.EmployeeID" asp-items="@ViewBag.Employee" class="form-control">
-      <option selected disabled>...</option>
-    </select>
-  </div>
-  <input type="hidden" asp-for="CreatedAt" value="@DateTime.Now" />
-  <button type="submit">Submit Ticket</button>
-</form>
-<a asp-action="TicketList" class="btn btn-dark">Back</a>
