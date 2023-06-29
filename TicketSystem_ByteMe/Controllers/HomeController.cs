@@ -37,7 +37,7 @@ namespace TicketSystem_ByteMe.Home
     {
       return View(repo);
     }
-    public IActionResult TicketList()
+    public IActionResult ShowTickets()
     {
 
       return View(repo.Tickets
@@ -85,7 +85,7 @@ namespace TicketSystem_ByteMe.Home
       if (ModelState.IsValid)
       {
         repo.AddTicket(ticket);
-        return RedirectToAction("TicketList");
+        return RedirectToAction("ShowTickets");
       }
       else
       {
@@ -123,7 +123,7 @@ namespace TicketSystem_ByteMe.Home
       if (ModelState.IsValid)
       {
         repo.EditTicket(ticket);
-        return RedirectToAction("TicketList");
+        return RedirectToAction("ShowTickets");
       }
       else
       {
@@ -135,7 +135,7 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult SolvedTicket(int id)
     {
       repo.SolvedTicket(id);
-      return RedirectToAction("TicketList");
+      return RedirectToAction("ShowTickets");
     }
   }
 }

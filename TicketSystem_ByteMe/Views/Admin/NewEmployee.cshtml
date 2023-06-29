@@ -1,9 +1,9 @@
 ﻿@model Employee
-<div class="container m-5">
+<div class="container p-4">
   <form asp-action="NewEmployee" method="post">
     <div class="card">
       <div class="card-header">
-        <label class="mb-1">Add new Project</label>
+        <label class="mb-1">Add new Employee</label>
       </div>
       <div class="card-body row text-center">
         <label class="col-4 text-start">First Name:</label>
@@ -11,7 +11,7 @@
         <span class="col-4 text-start" asp-validation-for="FirstName"></span>
         <label class="col-4 text-start">Last Name:</label>
         <input class="col-4 mb-1" asp-for="LastName" />
-        <span class="col-4 text-start" asp-validation-for="FirstName"></span>
+        <span class="col-4 text-start" asp-validation-for="LastName"></span>
         <label class="col-4 text-start">Job Title: </label>
         <select class="col-4 mb-1" asp-for="JobTitle">
           <option selected disabled value="">...</option>

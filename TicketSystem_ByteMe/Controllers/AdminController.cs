@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using TicketSystem_ByteMe.Models;
 
 namespace TicketSystem_ByteMe.Home
@@ -25,6 +26,14 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult ShowProjects()
     {
       return View(repo.Projects);
+    }
+    public IActionResult ShowTickets()
+    {
+      return View(repo.Tickets
+        .Include(t => t.Project)
+        .Include(t => t.AssignedTo)
+        .Include(t => t.CreatedBy)
+        .OrderBy(h => h.Project));
     }
     public IActionResult EmployeeDetail(int id)
     {
@@ -81,8 +90,12 @@ namespace TicketSystem_ByteMe.Home
     [HttpPost]
     public IActionResult EditEmployee(Employee employee)
     {
-      repo.EditEmployee(employee);
-      return RedirectToAction("ShowEmployees");
+      if (ModelState.IsValid)
+      {
+        repo.EditEmployee(employee);
+        return RedirectToAction("ShowEmployees");
+      }
+      return View(employee);
     }
     [HttpGet]
     public IActionResult EditProject(int id)
@@ -93,8 +106,12 @@ namespace TicketSystem_ByteMe.Home
     [HttpPost]
     public IActionResult EditProject(Project project)
     {
-      repo.EditProject(project);
-      return RedirectToAction("ShowProjects");
+      if (ModelState.IsValid)
+      {
+        repo.EditProject(project);
+        return RedirectToAction("ShowProjects");
+      }
+      return View(project);
     }
     public IActionResult DeleteEmployee(int id)
     {

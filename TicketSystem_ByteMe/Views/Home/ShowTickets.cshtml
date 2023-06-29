@@ -16,19 +16,19 @@
           <td><a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a></td>
           @if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == true)
           {
-            <td><a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit </a> @ticket.AssignedTo.FirstName @ticket.AssignedTo.LastName</td>
+            <td style="text-align: center"><a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit @ticket.AssignedTo.FirstName @ticket.AssignedTo.LastName</a></td>
           }
           else if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == false)
           {
-            <td><a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a></td>
+            <td style="text-align: center"><a  class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a></td>
           }
           else if (ticket.SolvedAt is not null && ticket.AssignedTo.Terminated == true)
           {
-            <td><div><a class="btn btn-outline-success pb-0 pt-0">Closed</a>@ticket.SolvedAt</div></td>
+            <td style="text-align: center "><a class="btn btn-outline-success pb-0 pt-0"><div>Closed @ticket.SolvedAt</div></a></td>
           }
           else
           {
-            <td><div><a class="btn btn-outline-success pb-0 pt-0">Solved</a>@ticket.SolvedAt</div></td>
+            <td style="text-align:center"><a class="btn btn-outline-success pb-0 pt-0"><div>Solved @ticket.SolvedAt</div></a></td>
           }
         </tr>
       }
