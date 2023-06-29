@@ -31,6 +31,10 @@ namespace TicketSystem_ByteMe.Home
       GenerateValuesEmployees();
       return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
     }
+    public IActionResult Error()
+    {
+      return View();
+    }
     public IActionResult ProjectDetail(int id)
     {
       GenerateValuesTickets();
