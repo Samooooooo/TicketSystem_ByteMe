@@ -3,13 +3,13 @@
 <div class="container p-4">
   <div class="card">
     <div class="card-header fw-bold">
-      <div>@Model.Headline</div>
+      <div>Project: @Model.Project.Title </div>
       <div>Ticket ID: @Model.TicketID</div>
     </div>
     <div class="card-body">
       <div class="line"></div>
       <div class="card-title fw-bold text-center">
-        <div class="fs-4">@Model.Project.Title</div>
+        <div class="fs-4">@Model.Headline</div>
         <div class="assignedTo">Ticket assigned to: @Model.AssignedTo.FirstName @Model.AssignedTo.LastName</div>
       </div>
       <div class="line"></div>
