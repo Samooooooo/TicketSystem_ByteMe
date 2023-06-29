@@ -1,45 +1,51 @@
 ﻿@model IQueryable<Ticket>
-  <div class="container p-4">
-    <table class="table table-hover">
-      <thead>
+<div class="container p-4">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Projekt</th>
+        <th>Headline</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var ticket in Model)
+      {
         <tr>
-          <th>Projekt</th>
-          <th>Headline</th>
-          <th></th>
+          <td>
+            <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a>
+          </td>
+          <td>
+            <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
+          </td>
+          @if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == true)
+          {
+            <td>
+              <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit </a> @ticket.AssignedTo.FirstName @ticket.AssignedTo.LastName
+            </td>
+          }
+          else if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == false)
+          {
+            <td>
+              <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
+            </td>
+          }
+          else
+          {
+            <td>
+              <div>
+                <a class="btn btn-outline-success pb-0 pt-0">Solved</a>
+                @ticket.SolvedAt
+              </div>
+            </td>
+          }
         </tr>
-      </thead>
-      <tbody>
-        @foreach (var ticket in Model)
-        {
-          <tr>
-            <td>
-              <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a>
-            </td>
-            <td>
-              <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
-            </td>
-            @if (ticket.SolvedAt is null)
-            {
-              <td>
-                <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
-              </td>
-            }
-            else
-            {
-              <td>
-                <div>
-                  <a class="btn btn-outline-success pb-0 pt-0">Solved</a>
-                  @ticket.SolvedAt
-                </div>
-              </td>
-            }
-          </tr>
-        }
-      </tbody>
-    </table>
-    <div>
-      <a class="newButton" asp-action="NewTicket">New Ticket</a>
-      @ViewBag.Employee
-      @ViewBag.Project
-    </div>
+      }
+    </tbody>
+  </table>
+  <div>
+    <a class="newButton" asp-action="NewTicket">New Ticket</a>
+    @ViewBag.Employee
+    @ViewBag.Project
   </div>
+</div>
