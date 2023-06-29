@@ -4,6 +4,7 @@
 <head>
   <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="~/font-awesome/css/all.css" rel="stylesheet" />
   <link href="~/AdminStyleSheet.css" rel="stylesheet" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +16,13 @@
       <a class="navbar-brand" asp-action="Home"><img src="~/img/bitlclogo_red.png" width="175"/></a>
       
       <div>
-        <a asp-controller="Home" asp-action="Index" class="nav-link FontColor">Leave Admin Area</a>
+        <a asp-controller="Home" asp-action="Index" class="nav-link FontColor"><i class="fa fa-sign-out"></i> Leave Admin Area</a>
       </div>
       <div>
-        <a class="nav-link FontColor" asp-action="ShowProjects">Projects</a>
+        <a class="nav-link FontColor" asp-action="ShowProjects"><i class="fa fa-diagram-project"></i> Projects</a>
       </div>
       <div>
-        <a class="nav-link FontColor" asp-action="ShowEmployees">Employees</a>
+        <a class="nav-link FontColor" asp-action="ShowEmployees"><i class="fa fa-user"></i> Employees</a>
       </div>
     </nav>
   </header>
