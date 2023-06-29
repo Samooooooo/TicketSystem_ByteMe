@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 
 namespace TicketSystem_ByteMe.Models
 {
@@ -9,7 +7,7 @@ namespace TicketSystem_ByteMe.Models
   {
     [Key]
     public int TicketID { get; set; }
-    [Required(ErrorMessage ="this field is required")]
+    [Required(ErrorMessage = "this field is required")]
     [MaxLength(20, ErrorMessage = "max. 20 characters allowed")]
     [MinLength(5, ErrorMessage = "min. 5 characters required")]
     public string Headline { get; set; }

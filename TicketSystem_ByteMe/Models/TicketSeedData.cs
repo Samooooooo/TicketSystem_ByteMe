@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace TicketSystem_ByteMe.Models
 {
@@ -16,9 +15,9 @@ namespace TicketSystem_ByteMe.Models
       if (dbContext.Database.GetPendingMigrations().Any())
       {
         dbContext.Database.Migrate();
-      
+
       }
     }
   }
-  
+
 }

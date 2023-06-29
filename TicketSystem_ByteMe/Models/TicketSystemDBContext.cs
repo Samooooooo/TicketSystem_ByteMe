@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace TicketSystem_ByteMe.Models
 {
   public class TicketSystemDBContext : DbContext
   {
-    public TicketSystemDBContext(DbContextOptions options) : base(options) {
+    public TicketSystemDBContext(DbContextOptions options) : base(options)
+    {
     }
 
     public DbSet<Project> Projects { get; set; }

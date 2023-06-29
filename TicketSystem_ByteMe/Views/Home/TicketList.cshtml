@@ -12,32 +12,23 @@
       @foreach (var ticket in Model)
       {
         <tr>
-          <td>
-            <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a>
-          </td>
-          <td>
-            <a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a>
-          </td>
+          <td><a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Project.Title</a></td>
+          <td><a class="aTableRow" asp-action="TicketDetail" asp-route-id="@ticket.TicketID">@ticket.Headline</a></td>
           @if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == true)
           {
-            <td>
-              <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit </a> @ticket.AssignedTo.FirstName @ticket.AssignedTo.LastName
-            </td>
+            <td><a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit </a> @ticket.AssignedTo.FirstName @ticket.AssignedTo.LastName</td>
           }
           else if (ticket.SolvedAt is null && ticket.AssignedTo.Terminated == false)
           {
-            <td>
-              <a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a>
-            </td>
+            <td><a class="aButton" asp-action="EditTicket" asp-route-id="@ticket.TicketID">Edit</a></td>
+          }
+          else if (ticket.SolvedAt is not null && ticket.AssignedTo.Terminated == true)
+          {
+            <td><div><a class="btn btn-outline-success pb-0 pt-0">Closed</a>@ticket.SolvedAt</div></td>
           }
           else
           {
-            <td>
-              <div>
-                <a class="btn btn-outline-success pb-0 pt-0">Solved</a>
-                @ticket.SolvedAt
-              </div>
-            </td>
+            <td><div><a class="btn btn-outline-success pb-0 pt-0">Solved</a>@ticket.SolvedAt</div></td>
           }
         </tr>
       }

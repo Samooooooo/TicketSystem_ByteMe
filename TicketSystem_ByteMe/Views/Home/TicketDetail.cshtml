@@ -14,9 +14,13 @@
       </div>
       <div class="line"></div>
       <p class="card-text">@Model.Description</p>
-      @if (Model.SolvedAt == null)
+      @if (Model.SolvedAt == null && Model.AssignedTo.Terminated == false)
       {
         <a class="SolvedButton" asp-action="SolvedTicket" asp-route-id="@Model.TicketID">mark as solved</a>
+      }
+      else if (Model.SolvedAt == null && Model.AssignedTo.Terminated)
+      {
+        <a class="SolvedButton" asp-action="SolvedTicket" asp-route-id="@Model.TicketID">mark as closed</a>
       }
     </div>
     <div class="card-footer text-muted createdBy">

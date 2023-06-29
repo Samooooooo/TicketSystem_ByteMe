@@ -29,7 +29,8 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult EmployeeDetail(int id)
     {
       GenerateValuesEmployees();
-      return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
+      return View(repo.Employees
+        .FirstOrDefault(p => p.EmployeeID == id));
     }
     public IActionResult Error()
     {
@@ -38,7 +39,8 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult ProjectDetail(int id)
     {
       GenerateValuesTickets();
-      return View(repo.Projects.FirstOrDefault(p => p.ProjectID == id));
+      return View(repo.Projects
+        .FirstOrDefault(p => p.ProjectID == id));
     }
     [HttpGet]
     public IActionResult NewEmployee()
@@ -73,7 +75,8 @@ namespace TicketSystem_ByteMe.Home
     [HttpGet]
     public IActionResult EditEmployee(int id)
     {
-      return View(repo.Employees.FirstOrDefault(p => p.EmployeeID == id));
+      return View(repo.Employees
+        .FirstOrDefault(p => p.EmployeeID == id));
     }
     [HttpPost]
     public IActionResult EditEmployee(Employee employee)
@@ -84,7 +87,8 @@ namespace TicketSystem_ByteMe.Home
     [HttpGet]
     public IActionResult EditProject(int id)
     {
-      return View(repo.Projects.FirstOrDefault(p => p.ProjectID == id));
+      return View(repo.Projects
+        .FirstOrDefault(p => p.ProjectID == id));
     }
     [HttpPost]
     public IActionResult EditProject(Project project)
@@ -114,12 +118,19 @@ namespace TicketSystem_ByteMe.Home
     }
     public void GenerateValuesTickets()
     {
-      ViewBag.TicketsProjectID = repo.Tickets.Select(n => n.Project.ProjectID).ToList(); 
+      ViewBag.TicketsProjectID = repo.Tickets
+        .Select(n => n.Project.ProjectID)
+        .ToList();
     }
     public void GenerateValuesEmployees()
     {
-      ViewBag.TicketsAssignedTo = repo.Tickets.Select(a => a.AssignedTo.EmployeeID).ToList();
-      ViewBag.TicketsCreatedBy = repo.Tickets.Select(a => a.CreatedBy.EmployeeID).ToList();
+      ViewBag.TicketsAssignedTo = repo.Tickets
+        .Select(a => a.AssignedTo.EmployeeID)
+        .ToList();
+
+      ViewBag.TicketsCreatedBy = repo.Tickets
+        .Select(a => a.CreatedBy.EmployeeID)
+        .ToList();
     }
   }
 }

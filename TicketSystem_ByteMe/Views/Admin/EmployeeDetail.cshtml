@@ -20,11 +20,11 @@
       if (Model.Terminated == false)
       {
         <a class="DeleteButton" asp-action="TerminateEmployee" asp-route-id="@Model.EmployeeID">Terminate</a>
-      }     
+      }
     }
     else
     {
       <a class="DeleteButton" asp-action="DeleteEmployee" asp-route-id="@Model.EmployeeID">Delete</a>
     }
-    </div>
   </div>
+</div>

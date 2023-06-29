@@ -17,8 +17,18 @@ namespace TicketSystem_ByteMe.Home
     }
     private void GenerateValues()
     {
-      var employees = repo.Employees.Where(t => t.Terminated == false).Select(n => new { Name = n.FirstName + ' ' + n.LastName, ID = n.EmployeeID.ToString() });
-      var projects = repo.Projects.Select(n => new { n.Title, n.ProjectID });
+      var employees = repo.Employees
+        .Where(t => t.Terminated == false)
+        .Select(n => new
+        {
+          Name = n.FirstName + ' ' + n.LastName,
+          ID = n.EmployeeID
+        .ToString()
+        });
+
+      var projects = repo.Projects
+        .Select(n => new { n.Title, n.ProjectID });
+
       ViewBag.Employee = new SelectList(employees, "ID", "Name");
       ViewBag.Project = new SelectList(projects, "ProjectID", "Title");
 
@@ -30,11 +40,19 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult TicketList()
     {
 
-      return View(repo.Tickets.Include(t => t.Project).Include(t => t.AssignedTo).Include(t => t.CreatedBy).OrderBy(h => h.Project));
+      return View(repo.Tickets
+        .Include(t => t.Project)
+        .Include(t => t.AssignedTo)
+        .Include(t => t.CreatedBy)
+        .OrderBy(h => h.Project));
     }
     public IActionResult TicketDetail(int id)
     {
-      return View(repo.Tickets.Include(t => t.Project).Include(e => e.AssignedTo).Include(t => t.CreatedBy).FirstOrDefault(t => t.TicketID == id));
+      return View(repo.Tickets
+        .Include(t => t.Project)
+        .Include(e => e.AssignedTo)
+        .Include(t => t.CreatedBy)
+        .FirstOrDefault(t => t.TicketID == id));
     }
     [HttpGet]
     public IActionResult NewTicket()
@@ -46,16 +64,19 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult NewTicket(Ticket ticket)
     {
       if (ticket.Project is not null)
-      {        
-      ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
+      {
+        ticket.Project = repo.Projects
+            .FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
       }
       if (ticket.CreatedBy is not null)
       {
-      ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
+        ticket.CreatedBy = repo.Employees
+            .FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
       }
       if (ticket.AssignedTo is not null)
       {
-      ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+        ticket.AssignedTo = repo.Employees
+            .FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
       }
 
       ModelState.Clear();
@@ -78,14 +99,23 @@ namespace TicketSystem_ByteMe.Home
     public IActionResult EditTicket(int id)
     {
       GenerateValues();
-      return View(repo.Tickets.Include(t => t.Project).Include(e => e.AssignedTo).Include(t => t.CreatedBy).FirstOrDefault(t => t.TicketID == id));
+      return View(repo.Tickets
+        .Include(t => t.Project)
+        .Include(e => e.AssignedTo)
+        .Include(t => t.CreatedBy)
+        .FirstOrDefault(t => t.TicketID == id));
     }
     [HttpPost]
     public IActionResult EditTicket(Ticket ticket)
     {
-      ticket.Project = repo.Projects.FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
-      ticket.CreatedBy = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
-      ticket.AssignedTo = repo.Employees.FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
+      ticket.Project = repo.Projects
+        .FirstOrDefault(t => t.ProjectID == ticket.Project.ProjectID);
+
+      ticket.CreatedBy = repo.Employees
+        .FirstOrDefault(t => t.EmployeeID == ticket.CreatedBy.EmployeeID);
+
+      ticket.AssignedTo = repo.Employees
+        .FirstOrDefault(t => t.EmployeeID == ticket.AssignedTo.EmployeeID);
 
       ModelState.Clear();
       TryValidateModel(ticket);
@@ -102,10 +132,10 @@ namespace TicketSystem_ByteMe.Home
 
       }
     }
-    public IActionResult SolvedTicket(int id) 
+    public IActionResult SolvedTicket(int id)
     {
-      repo.SolvedTicket(id); 
-      return RedirectToAction("TicketList"); 
+      repo.SolvedTicket(id);
+      return RedirectToAction("TicketList");
     }
   }
 }
